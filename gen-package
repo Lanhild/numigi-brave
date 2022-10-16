@@ -2,9 +2,8 @@
 # See https://github.com/Lanhild/ppa-maintainers
 # Template helper script used to generate packages using the fpm utility
 # See HELP for details
-set -euo pipefail
 set -a
-source .env
+source ./.env
 set +a
 
 # Variables definition
@@ -20,6 +19,15 @@ Example:
 numigi-ppa source repository code: <https://github.com/Lanhild/numigi-ppa/>
 Maintainer profile and contact <https://github.com/Lanhild/>"
 
+# Verify if script dependencies are installed on the system
+if command -v fpm >/dev/null 2>&1 ; then
+  echo "Dependencies found..."
+else
+  echo "The dependency `fpm` is not installed on the system. The package '${NAME}' cannot be generated without it."
+  exit 1
+fi
+
+# Command arguments
 POSITIONAL_ARGS=()
 
 while [[ $# -gt 0 ]]; do
