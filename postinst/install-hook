@@ -17,5 +17,4 @@ echo 'deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 echo 'Updating sources...' 
 sudo apt update
 
-echo 'Installing the binary...'
-sudo apt install brave-browser
+echo 'Run the command sudo apt install brave-browser to install Brave Browser'
